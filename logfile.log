@@ -1,0 +1,10 @@
+INFO	2024-01-24 15:51:54,466	0	org.example.Main	[main]	Throwing exception due to formatting issue: -5.0
+INFO	2024-01-24 15:59:19,230	0	org.example.Main	[main]	Throwing exception due to formatting issue due to the price: 10.99
+INFO	2024-01-24 15:59:38,078	0	org.example.Main	[main]	Throwing exception due to formatting issue due to the price: 10.99
+INFO	2024-01-24 16:07:27,824	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
+INFO	2024-01-24 16:10:18,979	0	org.example.Main	[main]	Throwing exception due to formatting issue with the item price: -10.99
+INFO	2024-01-24 16:12:01,340	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
+INFO	2024-01-24 16:12:25,710	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food item name: 
+INFO	2024-01-24 16:26:08,295	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
+INFO	2024-01-24 22:25:44,482	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
+INFO	2024-01-24 22:26:46,778	62296	org.example.Main	[main]	Throwing exception due to formatting issue with the item price: -1.0
