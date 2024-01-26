@@ -18,26 +18,16 @@ public class MenuService {
 
     public void saveMenu(String itemType, String subItemType, double price) throws MenuException {
 
-        Double price2 = new Double(price);
-
-        if (price < 0){
-            Main.log.info("Throwing exception due to formatting issue with the item price: " + price);
-            throw new MenuException("Menu item cannot be negative");
-        }
-        else if (itemType.length() < 1){
-            Main.log.info("Throwing exception due to formatting issue with the food type: " + itemType);
+        if (itemType.isEmpty()){
+            Main.log.warn("Throwing exception due to formatting issue with the food type: " + itemType);
             throw new MenuException("Item type cannot be blank");
         }
-        else if (subItemType.length() < 1){
-            Main.log.info("Throwing exception due to formatting issue with the food item name: " + subItemType);
+        else if (subItemType.isEmpty()){
+            Main.log.warn("Throwing exception due to formatting issue with the food item name: " + subItemType);
             throw new MenuException("Name of food item cannot be blank");
         }
-        else if (price2 == null){
-            Main.log.info("Throwing exception due to formatting issue due to the price: " + price);
-            throw new MenuException("Item price cannot be blank");
-        }
-        else if (price2 < 0){
-            Main.log.info("Throwing exception due to formatting issue due to the price: " + price);
+        else if (price < 0){
+            Main.log.warn("Throwing exception due to formatting issue due to the price: " + price);
             throw new MenuException("Item price cannot be negative");
         }
         else {
@@ -101,6 +91,7 @@ public class MenuService {
         String confirmation = sc.nextLine();
         entries.clear();
         System.out.println("Entries deleted.");
+        Main.log.info("All entries deleted.");
     }
 
     public void deleteMenuItem() throws CLIException {
@@ -118,11 +109,16 @@ public class MenuService {
                 if (currentList.contains(removeFoodItem)){
                     iterator.remove();
                     System.out.println("Successfully removed: " + removeFoodItem + " from the menu.");
+                    Main.log.info("Successfully removed: " + removeFoodItem + " from the menu.");
                     break;
                 }
             }
         }
         else{
+            Main.log.info("You tried to remove the following... ");
+            Main.log.info("Food Category: " + removeFoodCategory);
+            Main.log.info("Food Item: " + removeFoodItem);
+            Main.log.warn("Nothing to remove. Please make sure that items above are still in the menu.");
             throw new CLIException("Nothing to remove. Please make sure that item is still in the menu.");
         }
 

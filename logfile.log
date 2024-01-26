@@ -8,3 +8,12 @@ INFO	2024-01-24 16:12:25,710	0	org.example.Main	[main]	Throwing exception due to
 INFO	2024-01-24 16:26:08,295	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
 INFO	2024-01-24 22:25:44,482	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
 INFO	2024-01-24 22:26:46,778	62296	org.example.Main	[main]	Throwing exception due to formatting issue with the item price: -1.0
+INFO	2024-01-26 10:40:05,093	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
+INFO	2024-01-26 10:46:09,078	0	org.example.Main	[main]	Throwing exception due to formatting issue due to the price: -2.0
+INFO	2024-01-26 10:55:35,145	0	org.example.Main	[main]	You tried to remove the following... 
+INFO	2024-01-26 10:55:35,152	7	org.example.Main	[main]	Food Category: hotdog
+Food Item: chilli dog
+WARN	2024-01-26 10:55:35,152	7	org.example.Main	[main]	Nothing to remove. Please make sure that items above are still in the menu.
+WARN	2024-01-26 12:30:45,399	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
+WARN	2024-01-26 12:32:04,459	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
+WARN	2024-01-26 12:36:47,961	0	org.example.Main	[main]	Throwing exception due to formatting issue with the food type: 
