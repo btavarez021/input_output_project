@@ -3,6 +3,8 @@ package org.example;
 import org.example.Exception.CLIException;
 import org.example.Exception.MenuException;
 import java.util.Scanner;
+
+import org.example.Service.MenuService;
 import org.example.Views.inputHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,11 +14,13 @@ public class Main {
     public static Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        showMenu();
+        MenuService menuService = new MenuService();
+        showMenu(menuService);
     }
 
-        public static void showMenu(){
-        inputHandler inputHandler = new inputHandler();
+        public static void showMenu(MenuService menuService){
+
+        inputHandler inputHandler = new inputHandler(menuService);
         System.out.println(inputHandler);
         Scanner sc = new Scanner(System.in);
 

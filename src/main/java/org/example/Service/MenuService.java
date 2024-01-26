@@ -1,5 +1,6 @@
 package org.example.Service;
 
+import org.example.Model.MenuEntry;
 import org.example.Exception.CLIException;
 import org.example.Exception.MenuException;
 
@@ -13,21 +14,20 @@ public class MenuService {
 
     public MenuService(){
         this.entries = new HashMap<>();
-
     }
 
-    public void saveMenu(String itemType, String subItemType, double price) throws MenuException {
+    public void saveMenu(MenuEntry menuEntry) throws MenuException {
 
-        if (itemType.isEmpty()){
-            Main.log.warn("Throwing exception due to formatting issue with the food type: " + itemType);
+        if (menuEntry.getFoodCategory().isEmpty()){
+            Main.log.warn("Throwing exception due to formatting issue with the food type: " + menuEntry.getFoodCategory());
             throw new MenuException("Item type cannot be blank");
         }
-        else if (subItemType.isEmpty()){
-            Main.log.warn("Throwing exception due to formatting issue with the food item name: " + subItemType);
+        else if (menuEntry.getFoodItem().isEmpty()){
+            Main.log.warn("Throwing exception due to formatting issue with the food item name: " + menuEntry.getFoodItem());
             throw new MenuException("Name of food item cannot be blank");
         }
-        else if (price < 0){
-            Main.log.warn("Throwing exception due to formatting issue due to the price: " + price);
+        else if (menuEntry.getPrice() < 0){
+            Main.log.warn("Throwing exception due to formatting issue due to the price: " + menuEntry.getPrice());
             throw new MenuException("Item price cannot be negative");
         }
         else {
@@ -35,22 +35,22 @@ public class MenuService {
             List<String> itemList = new ArrayList<>();
 
 
-            itemList.add(subItemType);
-            itemList.add(String.valueOf(price));
+            itemList.add(menuEntry.getFoodItem());
+            itemList.add(String.valueOf(menuEntry.getPrice()));
 
             listOfLists.add(itemList);
 
-            if (entries.containsKey(itemType)){
-                List<List<String>> existingList = entries.get(itemType);
+            if (entries.containsKey(menuEntry.getFoodCategory())){
+                List<List<String>> existingList = entries.get(menuEntry.getFoodCategory());
                 existingList.addAll(new ArrayList<>(listOfLists));
 
-                System.out.println(itemType);
-                entries.put(itemType, existingList);
+                System.out.println(menuEntry.getFoodCategory());
+                entries.put(menuEntry.getFoodCategory(), existingList);
                 System.out.println("Entries: " + entries);
 
             }
             else{
-                entries.put(itemType, new ArrayList<>(Collections.singletonList(itemList)));
+                entries.put(menuEntry.getFoodCategory(), new ArrayList<>(Collections.singletonList(itemList)));
             }
         }
     }
@@ -84,14 +84,25 @@ public class MenuService {
 //        System.out.println("Successfully removed: " + removeFoodCategory + " and all items items from the menu.");
 //    }
 
-    public void deleteAllMenuItem1() {
-        System.out.println("Are you sure you want to delete all your menu items?");
-        System.out.println("enter 'yes' to delete your menu.");
-        Scanner sc = new Scanner(System.in);
-        String confirmation = sc.nextLine();
-        entries.clear();
-        System.out.println("Entries deleted.");
-        Main.log.info("All entries deleted.");
+    public void deleteAllMenuItem1(MenuService menuService) {
+        boolean continueLoop = true;
+
+        while (continueLoop) {
+            System.out.println("Are you sure you want to delete all your menu items?");
+            System.out.println("enter 'yes' to delete your menu.");
+            Scanner sc = new Scanner(System.in);
+            String confirmation = sc.nextLine().trim().toLowerCase();
+            if (confirmation.equals("yes")) {
+                entries.clear();
+                System.out.println("Entries deleted.");
+                Main.log.info("All entries deleted.");
+                continueLoop = false;
+            } else {
+                System.out.println("No entries deleted. Returning back to the menu.");
+                Main.log.info("No entries deleted. Returning back to the menu.");
+                Main.showMenu(menuService);
+            }
+        }
     }
 
     public void deleteMenuItem() throws CLIException {
@@ -126,5 +137,9 @@ public class MenuService {
 
     public Map<String, List<List<String>>> getEntries(){
         return this.entries;
+    }
+
+    public HashMap<String, List<List<String>>> getMenuEntries() {
+        return new HashMap<>(entries);
     }
 }

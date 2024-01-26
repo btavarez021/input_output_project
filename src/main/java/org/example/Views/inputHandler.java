@@ -1,34 +1,40 @@
 package org.example.Views;
 import org.example.Exception.CLIException;
 import org.example.Exception.MenuException;
+import org.example.Model.MenuEntry;
 import org.example.Service.MenuService;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-import org.example.Main;
 
 public class inputHandler {
 
-    MenuService menuService = new MenuService();
+    private MenuService menuService;
+
+    public inputHandler(MenuService menuService) {
+        this.menuService = menuService;
+    }
 
     public String userMenuAction(String userInput) throws MenuException, CLIException {
 
         if (userInput.equals("4")){
-            menuService.deleteAllMenuItem1();
+            menuService.deleteAllMenuItem1(menuService);
             return "All menu items deleted!";
         }
         else if (userInput.equals("3")){
             menuService.deleteMenuItem();
             return "Food item deleted!";
         }
-        else{
-            if (userInput.equals("1")) {
-                addCliMenuItems();
-            } else if (userInput.equals("2")) {
-                returnAllCLIMenuItems();
-                return "Item Added!";
+        else if (userInput.equals("1")) {
+            addCliMenuItems();
+        }
+        else if (userInput.equals("2")) {
+            HashMap<String, List<List<String>>> menuEntries = menuService.getMenuEntries();
+            System.out.println(menuEntries);
+            return "Menu Displayed!";
             }
+
 //            else if (userInput.equals("3")) {
 //                menuService.printAllEntries();
 //            }
@@ -38,7 +44,6 @@ public class inputHandler {
             }
             return "Item Added!";
         }
-    }
 
     public void addCliMenuItems() throws MenuException {
         Scanner sc = new Scanner(System.in);
@@ -48,7 +53,8 @@ public class inputHandler {
         String subTypeInput = sc.nextLine();
         System.out.println("Enter item price");
         double priceInput = sc.nextDouble();
-        menuService.saveMenu(itemTypeInput, subTypeInput, priceInput);
+        MenuEntry menuEntry = new MenuEntry(itemTypeInput, subTypeInput, priceInput);
+        menuService.saveMenu(menuEntry);
     }
 
     public String returnAllCLIMenuItems(){
