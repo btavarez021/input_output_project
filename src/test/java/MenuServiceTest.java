@@ -43,17 +43,4 @@ public class MenuServiceTest {
 
     }
 
-//    public void assertMenuEntry(String itemType, String subItemType, String expectedPrice){
-//        Map<String, List<List<String>>> entries = menuService.printMenuEntries();
-//
-//
-//
-//        Assert.assertTrue(entries.containsKey(itemType));
-//
-//        Assert.assertEquals(1, entries.get(itemType).size());
-//        Assert.assertEquals(subItemType, entries.get(itemType).get(0).get(0));
-//        Assert.assertEquals(expectedPrice, Double.parseDouble(entries.get(itemType).get(0).get(1)));
-//    }
-
-
 }
