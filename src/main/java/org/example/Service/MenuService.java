@@ -13,6 +13,7 @@ public class MenuService {
     public HashMap<String, List<List<String>>> entries;
 
     public MenuService(){
+
         this.entries = new HashMap<>();
     }
 
@@ -46,7 +47,7 @@ public class MenuService {
 
                 System.out.println(menuEntry.getFoodCategory());
                 entries.put(menuEntry.getFoodCategory(), existingList);
-                System.out.println("Entries: " + entries);
+//                System.out.println("Entries: " + entries);
 
             }
             else{
@@ -133,6 +134,17 @@ public class MenuService {
             throw new CLIException("Nothing to remove. Please make sure that item is still in the menu.");
         }
 
+    }
+
+    public void searchMenuItem(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to the search");
+        System.out.println("Please enter a food category: ");
+        String foodCategory = sc.nextLine();
+
+        if (entries.containsKey(foodCategory)) {
+            System.out.println("Here is the food category and its items that you requested: " + entries.get(foodCategory));
+        }
     }
 
     public Map<String, List<List<String>>> getEntries(){

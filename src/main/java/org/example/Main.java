@@ -32,7 +32,8 @@ public class Main {
 //            System.out.println("3. View Formatted Menu");
             System.out.println("3. Delete a single menu item");
             System.out.println("4. Delete all items");
-            System.out.println("5. Exit");
+            System.out.println("5. Search for Menu Category");
+            System.out.println("6. Exit");
             String userInput = sc.nextLine();
             try {
                 String output = inputHandler.userMenuAction(userInput);

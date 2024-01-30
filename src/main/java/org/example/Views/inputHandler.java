@@ -13,6 +13,7 @@ public class inputHandler {
     private MenuService menuService;
 
     public inputHandler(MenuService menuService) {
+
         this.menuService = menuService;
     }
 
@@ -34,11 +35,15 @@ public class inputHandler {
             System.out.println(menuEntries);
             return "Menu Displayed!";
             }
+        else if (userInput.equals("5")){
+            menuService.searchMenuItem();
+            return "Here are the menu items you searched for";
+        }
 
 //            else if (userInput.equals("3")) {
 //                menuService.printAllEntries();
 //            }
-        else if (userInput.equals("5")) {
+        else if (userInput.equals("6")) {
                 System.exit(1);
                 System.out.println("Successfully exited the menu entry application!");
             }
