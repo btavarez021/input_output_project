@@ -30,6 +30,8 @@ public class inputHandler {
         }
         else if (userInput.equals("1")) {
             addCliMenuItems();
+            resultMessage = "Item added!";
+
         }
         else if (userInput.equals("2")) {
             HashMap<String, List<List<String>>> menuEntries = menuService.getMenuEntries();
@@ -37,7 +39,7 @@ public class inputHandler {
             resultMessage = "Menu Displayed!";
             }
         else if (userInput.equals("5")){
-            resultMessage = "Here are the menu items you searched for";
+            resultMessage = "Search results displayed";
             menuService.searchMenuItem();
         }
 
