@@ -19,13 +19,14 @@ public class inputHandler {
 
     public String userMenuAction(String userInput) throws MenuException, CLIException {
 
+        String resultMessage = "";
         if (userInput.equals("4")){
             menuService.deleteAllMenuItem1(menuService);
-            return "All menu items deleted!";
+            resultMessage = "All menu items deleted!";
         }
         else if (userInput.equals("3")){
             menuService.deleteMenuItem();
-            return "Food item deleted!";
+            resultMessage = "Food item deleted!";
         }
         else if (userInput.equals("1")) {
             addCliMenuItems();
@@ -33,11 +34,11 @@ public class inputHandler {
         else if (userInput.equals("2")) {
             HashMap<String, List<List<String>>> menuEntries = menuService.getMenuEntries();
             System.out.println(menuEntries);
-            return "Menu Displayed!";
+            resultMessage = "Menu Displayed!";
             }
         else if (userInput.equals("5")){
+            resultMessage = "Here are the menu items you searched for";
             menuService.searchMenuItem();
-            return "Here are the menu items you searched for";
         }
 
 //            else if (userInput.equals("3")) {
@@ -47,7 +48,7 @@ public class inputHandler {
                 System.exit(1);
                 System.out.println("Successfully exited the menu entry application!");
             }
-            return "Item Added!";
+            return resultMessage;
         }
 
     public void addCliMenuItems() throws MenuException {

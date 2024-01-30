@@ -136,14 +136,20 @@ public class MenuService {
 
     }
 
-    public void searchMenuItem(){
+    public List<List<String>> searchMenuItem(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to the search");
         System.out.println("Please enter a food category: ");
         String foodCategory = sc.nextLine();
 
         if (entries.containsKey(foodCategory)) {
-            System.out.println("Here is the food category and its items that you requested: " + entries.get(foodCategory));
+            List<List<String>> foundItems = getMenuEntries().get(foodCategory);
+            System.out.println("Here is the food category and its items that you requested: " + foundItems);
+            return foundItems;
+        }
+        else{
+            System.out.println("Food category not found.");
+            return Collections.emptyList();
         }
     }
 
